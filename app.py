@@ -37,7 +37,7 @@ def display_question(number):
     question = question_data.question
     allow_text = question_data.allow_text
     choices = question_data.choices
-    return render_template('question.html', question=question, choices=choices, text=allow_text, number=number)
+    return render_template('question.html', question=question, choices=choices, text=allow_text, number=number+1)
 
 @app.route('/answer', methods=['POST'])
 def handle_answer():
@@ -57,4 +57,4 @@ def handle_answer():
 def thank_user():
     "thanks the user for completing the survey"
 
-    return render_template('thanks.html')
+    return render_template('thanks.html', answers=session['responses'])
